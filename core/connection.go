@@ -3,23 +3,11 @@ package core
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-
 	"github.com/gorilla/websocket"
 )
 
 // 用户列表
 var UserList = []string{}
-
-// 定义升级器，将http请求升级为ws请求
-var Upgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
-	// 跨域访问
-	CheckOrigin: func(r *http.Request) bool {
-		return true
-	},
-}
 
 // 连接
 type Conn struct {

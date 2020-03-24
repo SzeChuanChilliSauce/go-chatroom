@@ -3,16 +3,27 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/websocket"
 	"go-chatroom/core"
 	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
+// 定义升级器，将http请求升级为ws请求
+var Upgrader = websocket.Upgrader{
+	ReadBufferSize:  1024,
+	WriteBufferSize: 1024,
+	// 跨域访问
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
 // ws的回调函数
 func WsHandler(w http.ResponseWriter, r *http.Request) {
 	// 升级
-	ws, err := core.Upgrader.Upgrade(w, r, nil)
+	ws, err := Upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		return
 	}
