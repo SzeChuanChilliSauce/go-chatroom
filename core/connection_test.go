@@ -1,4 +1,4 @@
-package connection
+package core
 
 import (
 	"fmt"
@@ -7,8 +7,8 @@ import (
 
 func TestRemove(t *testing.T) {
 	slice := []string{"chensq", "zengxf", "yangf", "zhangq", "zhouxd", "chenghl"}
-	fmt.Println(remove(slice, "cdd"))
-	fmt.Println(remove(slice, "chensq"))
-	fmt.Println(remove(slice, "chenghl"))
-	fmt.Println(remove(slice, "yangf"))
+	fmt.Println(Remove(slice, "cdd"))
+	fmt.Println(Remove(slice, "chensq"))
+	fmt.Println(Remove(slice, "chenghl"))
+	fmt.Println(Remove(slice, "yangf"))
 }
